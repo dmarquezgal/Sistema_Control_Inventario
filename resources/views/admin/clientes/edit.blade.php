@@ -1,37 +1,63 @@
 @extends("../layouts/plantilla")
+
 @section('nav')
 
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h2>Informacion Cliente</h2>
-                <form action="/clientes/{{$clientes->id}}" method="POST">
-{{csrf_field()}}
-<input type="hidden" name="_method" value="DELETE">
-<input class="btn btn-danger" type="submit" value="Eliminar cliente">
-</form>
-            </div>
-            <form method="post" action="/clientes/{{$clientes -> id}}" >
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h2>Información Cliente</h2>
+            <form action="/clientes/{{ $clientes->id }}" method="POST">
+                {{ csrf_field() }}
+                <input type="hidden" name="_method" value="DELETE">
+                <input class="btn btn-danger" type="submit" value="Eliminar Cliente">
+            </form>
+        </div>
+        <form method="post" action="/clientes/{{ $clientes->id }}">
             <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="inputNombre">Nombre</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="Nombre"  name="nombre" value="{{$clientes -> nombre}}" >
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputPassword4">Apellido Paterno</label>
-      <input type="text" class="form-control" id="inputPassword4" placeholder="Apellido Paterno name" name="apellido_paterno" value="{{$clientes -> apellido_paterno}}">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputPassword4">Apellido Materno</label>
-      <input type="text" class="form-control" id="inputPassword4" placeholder="Apellido Materno" name="apellido_materno" value="{{$clientes -> apellido_materno}}">
-    </div>
-  </div>
-    {{csrf_field()}}
-    <br>
-    <input type="hidden" name="_method" value="PUT">
-    <input class="btn btn-warning m-2" type="submit" value="Editar Cliente" name="Enviar" >
-</form>
+                <div class="form-group col-md-4">
+                    <label for="inputNombre">Nombre:</label>
+                    <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" name="Nombre"
+                        value="{{ $clientes->name }}">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="inputRfc">RFC:</label>
+                    <input type="text" class="form-control" id="inputRfc" placeholder="RFC:" name="RFC"
+                        value="{{ $clientes->RFC }}">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="inputDireccion">Dirección:</label>
+                    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección" name="Dirección"
+                        value="{{ $clientes->adress }}">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="inputTelefono">Número telefónico:</label>
+                    <input type="number" class="form-control" id="inputTelefono" placeholder="Número telefónico"
+                        name="Telefono" value="{{ $clientes->phone }}">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="inputEmail">E-mail:</label>
+                    <input type="text" class="form-control" id="inputTelefono" placeholder="Correo electrónico" name="Email"
+                        value="{{ $clientes->email }}">
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="inputEmail">Fecha de registro:</label>
+                    <input type="date" class="form-control" id="inputTelefono" placeholder="Fecha de registro" name="Fecha"
+                        value="{{ $clientes->date_register }}">
+                </div>
+            </div>
 
 
-        </main>
+            {{ csrf_field() }}
+            <br>
+            <input type="hidden" name="_method" value="PUT">
+            <input class="btn btn-warning m-2" type="submit" value="Editar Cliente" name="Enviar">
+        </form>
+
+    </main>
 
 @endsection
