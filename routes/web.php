@@ -34,11 +34,11 @@ Route::get('/admin', [AdminController::class, 'index'])
     ->name('admin.index');
 
 
-Route::resource('admin/productos', 'App\Http\Controllers\ProductosController')->middleware('auth');
-Route::resource('admin/pedidos', 'App\Http\Controllers\PedidosController')->middleware('auth');
-Route::resource('admin/clientes', 'App\Http\Controllers\ClientesController')->middleware('auth');
-Route::resource('admin/empleados', 'App\Http\Controllers\EmpleadosController')->middleware('auth');
-Route::resource('admin/proveedores', 'App\Http\Controllers\ProveedoresController')->middleware('auth');
+Route::resource('admin/productos', 'App\Http\Controllers\ProductosController')->middleware('auth.admin');
+Route::resource('admin/pedidos', 'App\Http\Controllers\PedidosController')->middleware('auth.admin');
+Route::resource('admin/clientes', 'App\Http\Controllers\ClientesController')->middleware('auth.admin');
+Route::resource('admin/empleados', 'App\Http\Controllers\EmpleadosController')->middleware('auth.admin');
+Route::resource('admin/proveedores', 'App\Http\Controllers\ProveedoresController')->middleware('auth.admin');
 
-Route::resource('vendedor/pedidos_v', 'App\Http\Controllers\PedidosControllerV')->middleware('auth');
-Route::resource('vendedor/productos_v', 'App\Http\Controllers\ProductosControllerV')->middleware('auth');
+Route::resource('vendedor/pedidos_v', 'App\Http\Controllers\PedidosControllerV')->middleware('auth.vendedor');
+Route::resource('vendedor/productos_v', 'App\Http\Controllers\ProductosControllerV')->middleware('auth.vendedor');
