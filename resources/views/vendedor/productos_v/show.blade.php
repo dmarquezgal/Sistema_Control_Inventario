@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($productos as $productos)
+                    
                     <tr>
                         <td>CP-{{$productos -> id}}</td>
                         <td>{{$productos -> Nombre}}</td>
@@ -32,7 +32,7 @@
                             <a href="{{route("productos_v.edit", $productos -> id)}}"><strong>Ver mas</strong> </a>
                         </td>
                     </tr>
-                    @endforeach 
+                   
                 </tbody>
             </table>
         </div>

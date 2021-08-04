@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-
+use App\Models\Ventas;
+use App\Models\Producto;
 class PedidosController extends Controller
 {
     /**
@@ -15,7 +15,8 @@ class PedidosController extends Controller
     public function index()
     {
         //
-        return view("admin/pedidos.index");
+        $ventas = Ventas::all();
+        return view("admin/pedidos.index",compact("ventas"));
     }
 
     /**
@@ -38,6 +39,18 @@ class PedidosController extends Controller
     public function store(Request $request)
     {
         
+        $ventas = new Ventas;
+        $ventas -> Codigo_Cliente = $request -> cliente_id;
+        $ventas -> Fecha_Venta = $request ->  date_register;
+        $ventas -> Codigo_Vendedor = $request -> vendedor_id;
+        $ventas -> Codigo_Producto = $request -> producto_id;
+        $ventas -> Cantidad = $request -> Cantidad;
+        $producto = Producto::findOrFail($request -> producto_id);
+        $ventas -> Total  = ($producto -> Precio * $request-> Cantidad);
+        $ventas -> Precio = $producto -> Precio;
+        $ventas -> save();
+
+        return redirect("admin/pedidos");
     }
 
     /**
@@ -57,9 +70,11 @@ class PedidosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        
+        $ventas = Ventas::findOrFail($id);
+
+        return view("admin/pedidos.edit", compact("ventas")); 
     }
 
     /**
@@ -72,7 +87,16 @@ class PedidosController extends Controller
     public function update(Request $request, $id)
     {
         //
-        
+        $ventas = Ventas::findOrFail($id);
+        $ventas -> Codigo_Cliente = $request -> cliente_id;
+        $ventas -> Fecha_Venta = $request ->  date_register;
+        $ventas -> Codigo_Vendedor = $request -> vendedor_id;
+        $ventas -> Codigo_Producto = $request -> producto_id;
+        $ventas -> Cantidad = $request -> cantidad;
+        $ventas -> Precio = $request -> price;
+        $ventas -> Total  = $request -> cantidad_total;
+        $ventas -> save();
+        return redirect("admin/pedidos");
     }
 
     /**
@@ -84,6 +108,8 @@ class PedidosController extends Controller
     public function destroy($id)
     {
         //
-        
+        $venta = Ventas::findOrFail($id);
+        $venta -> delete();
+        return redirect("/admin/pedidos");
     }
     }

@@ -5,42 +5,37 @@
         <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h2>Productos</h2>
-            <a class="btn btn-info" href="{{ route('productos.create') }}">Nuevo Producto</a>
+           
+            <a class="btn btn-info" href="{{ route('productos.create') }}"> Nuevo Producto</a>
         </div>
         <div class="table-responsive">
-            <table class="table table-striped table-sm text-center">
+            <table class="table table-striped table-sm text-justify">
                 <thead>
                     <tr>
-                        <th>Código</th>
+                        <th>Codigo</th>
                         <th>Nombre</th>
-                        <th>Descripción</th>
+                        <th>Descripcion</th>
                         <th>Precio</th>
                         <th>Stock</th>
-                        <th>Precio de proveedor</th>
-                        <th>Código de vendedor</th>
-                        <th>Fecha de registro</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-
+                    @foreach($productos as $productos)
                     <tr>
-                        <td>CP-01</td>
-                        <td>Ejemplo de producto</td>
-                        <td>Este es un ejemplo de descripción</td>
-                        <td>$270.00</td>
-                        <td>50</td>
-                        <td>$250.00</td>
-                        <td>PC-01</td>
-                        <td>2021-07-29</td>
+                        <td>CP-{{$productos -> id}}</td>
+                        <td>{{$productos -> Nombre}}</td>
+                        <td>{{$productos -> Descripcion}}</td>
+                        <td>${{$productos -> Precio}}.00</td>
+                        <td>{{$productos -> Stock}} </td>
+                      
                         <td>
-                            <a href=""><strong>Ver más</strong> </a>
+                            <a href="{{route("productos.edit", $productos -> id)}}"><strong>Ver mas</strong> </a>
                         </td>
                     </tr>
-
+                    @endforeach 
                 </tbody>
             </table>
         </div>
     </main>
-
 @endsection

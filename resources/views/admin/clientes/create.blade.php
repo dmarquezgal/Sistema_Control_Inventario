@@ -7,7 +7,7 @@
             <h2>Cliente</h2>
         </div>
 
-        <form method="post" action="/clientes">
+        <form method="post" action="/admin/clientes">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputNombre">Nombre:</label>
@@ -21,13 +21,13 @@
 
                 <div class="form-group col-md-4">
                     <label for="inputDireccion">Dirección:</label>
-                    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección" name="Dirección">
+                    <input type="text" class="form-control" id="inputDireccion" placeholder="Dirección" name="Direccion">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="inputTelefono">Número telefónico:</label>
                     <input type="number" class="form-control" id="inputTelefono" placeholder="Número telefónico"
-                        name="Telefono">
+                        name="Numero_Telefonico">
                 </div>
 
                 <div class="form-group col-md-4">
@@ -38,7 +38,7 @@
 
                 <div class="form-group col-md-4">
                     <label for="inputEmail">Fecha de registro:</label>
-                    <input type="date" class="form-control" id="inputTelefono" placeholder="Fecha de registro" name="Fecha">
+                    <input type="date" class="form-control" id="inputTelefono" placeholder="Fecha de registro" name="Fecha_registro">
                 </div>
             </div>
 

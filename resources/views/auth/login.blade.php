@@ -18,7 +18,7 @@
     
             <!-- Login Form -->
             
-            <form method="POST" action="">
+            <form method="POST" action="/login">
               @csrf
               <input type="text" id="email" class="fadeIn second" name="email" placeholder="Correo electrónico" required>
               <input type="password" id="password" class="fadeIn third" name="password" placeholder="Contraseña" required>

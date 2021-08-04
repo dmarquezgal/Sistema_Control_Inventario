@@ -23,7 +23,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($clientes  as $clientes)
+                    
                     <tr>
                         <td>CC-{{$clientes -> id}}</td>
                         <td>{{$clientes -> Nombre}}</td>
@@ -34,7 +34,7 @@
                         <td>{{$clientes -> Fecha_registro}}</td>
                         <td> <a href="{{route("clientes.edit", $clientes -> id)}}"><strong>Ver mas</strong> </a></td>
                     </tr>
-                    @endforeach 
+                  
                 </tbody>
             </table>
         </div>

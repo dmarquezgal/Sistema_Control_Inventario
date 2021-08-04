@@ -7,7 +7,7 @@
             <h2>Nuevo Producto</h2>
         </div>
 
-        <form method="post" action="/productos">
+        <form method="POST" action="/vendedor/productos_v">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="inputText">Nombre del producto:</label>
@@ -28,18 +28,18 @@
                 <div class="form-group col-md-4">
                     <label for="inputText4">Precio de proveedor:</label>
                     <input type="number" class="form-control" id="inputText4" placeholder="Precio de proveedor"
-                        name="PrecioP">
+                        name="Precio_proveedor">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="inputText5">Código de proveedor:</label>
                     <input type="number" class="form-control" id="inputText5" placeholder="Código de proveedor"
-                        name="CodigoP">
+                        name="Codigo_Proveedor">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label for="inputText6">Fecha de registro:</label>
-                    <input type="date" class="form-control" id="inputText6" placeholder="Fecha de registro" name="Fecha">
+                    <input type="date" class="form-control" id="inputText6" placeholder="Fecha de registro" name="Fecha_registro">
                 </div>
             </div>
 

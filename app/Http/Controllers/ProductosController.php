@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Producto;
 
 class ProductosController extends Controller
 {
@@ -14,7 +15,8 @@ class ProductosController extends Controller
     public function index()
     {
         //
-        return view("admin/productos.index");
+        $productos = Producto::orderBy("Nombre")->get();
+        return view("admin/productos.index", compact('productos'));
     }
 
     /**
@@ -36,8 +38,17 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-        //
         
+        $producto = new Producto;
+        $producto -> Nombre = $request-> Nombre;
+        $producto -> Descripcion =$request-> Descripcion;
+        $producto -> Fecha_registro = $request -> Fecha_registro;
+        $producto -> Precio =$request-> Precio;
+        $producto -> Stock = $request-> Stock;
+        $producto -> Codigo_Proveedor = $request-> Codigo_Proveedor;
+        $producto -> Precio_proveedor = $request-> Precio_proveedor;
+        $producto->save();
+        return redirect("admin/productos");
     }
 
     /**
@@ -49,7 +60,8 @@ class ProductosController extends Controller
     public function show($id)
     {
         //
-        
+        $productos = Producto::findOrFail($id);
+        return view("admin/productos.show", compact("productos"));
     }
 
     /**
@@ -61,7 +73,8 @@ class ProductosController extends Controller
     public function edit($id)
     {
         //
-        
+        $producto = Producto::findOrFail($id);
+        return view("admin/productos.edit", compact("producto"));
     }
 
     /**
@@ -74,7 +87,16 @@ class ProductosController extends Controller
     public function update(Request $request, $id)
     {
         //
-       
+        $producto = Producto::findOrFail($id);
+        $producto -> Nombre = $request-> Nombre;
+        $producto -> Descripcion =$request-> Descripcion;
+        $producto -> Fecha_registro = $request -> Fecha_registro;
+        $producto -> Precio =$request-> Precio;
+        $producto -> Stock = $request-> Stock;
+        $producto -> Codigo_Proveedor = $request-> Codigo_Proveedor;
+        $producto -> Precio_proveedor = $request-> Precio_proveedor;
+        $producto->save();
+        return redirect("admin/productos");
     }
 
     /**
@@ -86,6 +108,8 @@ class ProductosController extends Controller
     public function destroy($id)
     {
         //
-        
+        $producto = Producto::findOrFail($id);
+        $producto->delete();
+        return redirect("admin/productos");
     }
 }

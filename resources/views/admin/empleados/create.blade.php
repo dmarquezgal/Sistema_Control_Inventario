@@ -6,7 +6,7 @@
             <h2>Empleado</h2>
         </div>
 
-        <form method="post" action="/empleados">
+        <form method="post" action="/admin/empleados">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputNombre">Nombre:</label>
@@ -15,17 +15,17 @@
 
                 <div class="form-group col-md-6">
                     <label for="inputEmail">E-mail</label>
-                    <input type="text" class="form-control" id="inputEmail" placeholder="Correo electrónico" name="email">
+                    <input type="text" class="form-control" id="inputEmail" placeholder="Correo electrónico" name="Email">
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="inputPassword">Contraseña:</label>
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="Pass">
                 </div>
 
                 <div class="form-group col-md-6">
                     <label for="inputRole">Tipo de usuario:</label>
-                    <select class="form-control" id="inputRole" name="Role">
+                    <select class="form-control" id="inputRole" name="Tipo_usuario">
                         <option value="Vendedor">Vendedor</option>
                         <option value="Admin">Administrador</option>
                     </select>

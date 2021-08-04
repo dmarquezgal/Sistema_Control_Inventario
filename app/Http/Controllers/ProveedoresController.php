@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Proveedores;
 class ProveedoresController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class ProveedoresController extends Controller
     public function index()
     {
         //
-        return view("admin/proveedores.index");
+        $proveedores= Proveedores::all();
+        return view("admin/proveedores.index", compact("proveedores"));
     }
 
     /**
@@ -37,7 +38,19 @@ class ProveedoresController extends Controller
     public function store(Request $request)
     {
         //
-        
+        $proveedor = new Proveedores;
+        $proveedor -> Nombre = $request ->Nombre;
+        $proveedor -> Numero_Telefonico = $request -> Numero_Telefonico;
+        $proveedor ->Direccion = $request -> Direccion;
+        $proveedor -> RFC= $request -> RFC;
+        $proveedor -> Email = $request -> Email;
+        $proveedor -> Fecha_registro = $request -> Fecha_registro;
+        $proveedor -> No_cuenta = $request -> No_cuenta;
+        $proveedor -> Compania= $request -> Compania;
+        $proveedor -> Clave_interbancaria = $request -> Clave_interbancaria ;
+        $proveedor -> save();
+
+        return redirect("admin/proveedores");
     }
 
     /**
@@ -61,6 +74,8 @@ class ProveedoresController extends Controller
     public function edit($id)
     {
         //
+        $proveedor = Proveedores::findOrFail($id);
+        return view("admin/proveedores.edit", compact("proveedor"));
         
     }
 
@@ -74,7 +89,9 @@ class ProveedoresController extends Controller
     public function update(Request $request, $id)
     {
         //
-        
+        $proveedores = Proveedores::findOrFail($id);
+        $proveedores->update($request->all());
+        return redirect("admin/proveedores");
     }
 
     /**
@@ -86,6 +103,10 @@ class ProveedoresController extends Controller
     public function destroy($id)
     {
         //
+        $proveedor = Proveedores::findOrFail($id);
+        $proveedor -> delete();
+        return redirect("admin/proveedores");
+
         
     }
 }

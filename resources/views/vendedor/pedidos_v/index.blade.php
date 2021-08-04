@@ -22,18 +22,21 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($ventas as $ventas)
                     <tr>
-                        <td>V-01</td>
-                        <td>CC-01</a></td>
-                        <td>2021-05-12</td>
-                        <td>VC-01</a></td>
-                        <td>CP-01</td>
-                        <td>50</a></td>
-                        <td>50.00</td>
-                        <td>2500.00</td>
-                        <td><a href=""><strong>Ver más</strong> </a></td>
+                        <td>{{$ventas -> id}}</td>
+                        <td>{{$ventas -> Codigo_Cliente}}</td>
+                        <td>{{ $ventas -> Fecha_Venta }}</td>
+                        <td>{{$ventas -> Codigo_Vendedor}}</td>
+                        <td><a href="{{route("productos_v.show", $ventas -> Codigo_Producto)}}">CP-{{$ventas -> Codigo_Producto}}</a></td>
+                        <td>{{$ventas -> Cantidad}}</a></td>
+                        <td>{{$ventas -> Precio}}</td>
+                        <td>{{$ventas -> Total}}</td>
+                        <td><a href="{{route("pedidos_v.edit", $ventas -> id)}}"><strong>Ver mas</strong> </a></td>
                     </tr>
+                    @endforeach
                 </tbody>
+
             </table>
         </div>
     </main>

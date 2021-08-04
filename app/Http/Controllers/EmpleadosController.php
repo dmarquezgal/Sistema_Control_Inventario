@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Vendedores;
 class EmpleadosController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class EmpleadosController extends Controller
     public function index()
     {
         //
-        return view("admin/empleados.index");
+        $empleado = Vendedores::all();
+        return view("admin/empleados.index", compact("empleado"));
     }
 
     /**
@@ -37,7 +38,14 @@ class EmpleadosController extends Controller
     public function store(Request $request)
     {
         //
-        
+        $vendedor = new Vendedores;
+        $vendedor ->  Nombre = $request -> Nombre ;
+        $vendedor -> Email = $request -> Email ;
+        $vendedor -> Pass= $request -> Pass;
+        $vendedor -> Tipo_usuario = $request -> Tipo_usuario;
+        $vendedor -> save();
+
+        return redirect("admin/empleados");
     }
 
     /**
@@ -49,7 +57,8 @@ class EmpleadosController extends Controller
     public function show($id)
     {
         //
-        
+        $empleado = Vendedores::findOrFail($id);
+        return view("admin/empleados.edit", compact("empleado"));
     }
 
     /**
@@ -61,7 +70,8 @@ class EmpleadosController extends Controller
     public function edit($id)
     {
         //
-        
+        $empleado = Vendedores::findOrFail($id);
+        return view("admin/empleados.edit", compact("empleado"));
     }
 
     /**
@@ -74,7 +84,9 @@ class EmpleadosController extends Controller
     public function update(Request $request, $id)
     {
         //
-        
+        $empleados = Vendedores::findOrFail($id);
+        $empleados -> update($request->all());
+        return redirect("admin/empleados");
     }
 
     /**
@@ -86,5 +98,9 @@ class EmpleadosController extends Controller
     public function destroy($id)
     {
         //
+        $empleados = Vendedores::findOrFail($id);
+        $empleados -> delete();
+
+        return redirect("admin/empleados");
     }
 }

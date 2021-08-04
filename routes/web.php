@@ -33,7 +33,7 @@ Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
 
-
+Route::resource('admin/register', 'App\Http\Controllers\RegisterController')->middleware('auth.admin');
 Route::resource('admin/productos', 'App\Http\Controllers\ProductosController')->middleware('auth.admin');
 Route::resource('admin/pedidos', 'App\Http\Controllers\PedidosController')->middleware('auth.admin');
 Route::resource('admin/clientes', 'App\Http\Controllers\ClientesController')->middleware('auth.admin');

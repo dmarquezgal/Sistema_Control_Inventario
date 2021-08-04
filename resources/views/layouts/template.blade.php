@@ -26,16 +26,19 @@
                         </a>
                         
                     </li>
+                  
                     <li class="nav-item">
                         <a class="nav-link "  href="{{route('pedidos_v.index')}}">
-                         Ventas
+                        <strong>Ventas</strong> 
                         </a>
                     </li>
+                 
                     <li class="nav-item">
                         <a class="nav-link "  href="{{route('productos_v.index')}}">
-                         Productos
+                        <strong> Productos</strong>
                         </a>
                     </li>
+                
                 </ul>
 
                 <ul class="nav flex-column mb-2">

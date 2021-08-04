@@ -7,13 +7,8 @@
             <h2>Venta</h2>
         </div>
         
-        <form method="post" action="/pedidos">
+        <form method="POST" action="/vendedor/pedidos_v">
             <div class="form-row">
-                <div class="form-group col-md-3">
-                    <label for="inputCodigoV">Código de venta:</label>
-                    <input type="number" class="form-control" id="inputCodigoV" placeholder="ID de la venta"
-                        name="id_venta">
-                </div>
 
                 <div class="form-group col-md-3">
                     <label for="inputCodigoC">Código de cliente:</label>
@@ -47,7 +42,7 @@
                         name="cantidad">
                 </div>
 
-                <div class="form-group col-md-3">
+                {{-- <div class="form-group col-md-3">
                     <label for="inputPrice">Precio:</label>
                     <input type="number" class="form-control" id="inputPrice" placeholder="Precio del producto"
                         name="price">
@@ -56,12 +51,12 @@
                 <div class="form-group col-md-3">
                     <label for="inputTotal">Total:</label>
                     <input type="number" class="form-control" id="inputTotal" placeholder="Cantidad total"
-                        name="cantidad_total">
-                </div>
+                        name="antidad">
+                </div> --}}
             </div>
 
             {{ csrf_field() }}
-            <input class="btn btn-primary" type="submit" value="Registrar Pedido" name="Enviar">
+            <input class="btn btn-primary" type="submit" value="Registrar Venta" name="Enviar">
         </form>
     </main>
 

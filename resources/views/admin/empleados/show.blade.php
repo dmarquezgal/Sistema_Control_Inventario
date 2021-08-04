@@ -21,7 +21,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($empleado as $empleado)
+                   
                     <tr>
                         <td>CE-{{$empleado -> id}}</td>
                         <td>{{$empleado -> Nombre}}</td>
@@ -33,7 +33,7 @@
                             <a href="{{route("empleados.edit", $empleado -> id)}}"><strong>Ver mas</strong> </a>
                         </td>
                     </tr>
-                    @endforeach 
+                  
                 </tbody>
             </table>
         </div>

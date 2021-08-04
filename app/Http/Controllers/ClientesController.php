@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Cliente;
+use App\Models\Clientes;
 
 class ClientesController extends Controller
 {
@@ -15,7 +15,8 @@ class ClientesController extends Controller
     public function index()
     {
         //
-        return view("admin/clientes.index");
+        $clientes = Clientes::all();
+        return view("admin/clientes.index", compact("clientes"));
     }
 
     /**
@@ -38,7 +39,15 @@ class ClientesController extends Controller
     public function store(Request $request)
     {
         //
-        
+        $cliente = new Clientes;
+        $cliente-> Nombre = $request ->Nombre;
+        $cliente -> RFC= $request -> RFC;
+        $cliente -> Direccion = $request -> Direccion;
+        $cliente -> Numero_Telefonico = $request -> Numero_Telefonico;
+        $cliente -> Email = $request -> Email;
+        $cliente -> Fecha_registro  = $request -> Fecha_registro;
+        $cliente -> save();
+        return redirect("admin/clientes");
     }
 
     /**
@@ -50,7 +59,8 @@ class ClientesController extends Controller
     public function show($id)
     {
         //
-        
+        $clientes = Clientes::findOrFail($id);
+        return view("admin/clientes.show", compact("clientes"));
     }
 
     /**
@@ -62,7 +72,8 @@ class ClientesController extends Controller
     public function edit($id)
     {
         //
-        
+        $clientes = Clientes::findOrFail($id);
+        return view("admin/clientes.edit", compact("clientes"));
     }
 
     /**
@@ -75,7 +86,9 @@ class ClientesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        
+        $clientes  = Clientes::findOrFail($id);
+        $clientes ->update($request->all());
+        return redirect("admin/clientes");
     }
 
     /**
@@ -87,6 +100,8 @@ class ClientesController extends Controller
     public function destroy($id)
     {
         //
-        
+        $clientes  = Clientes::findOrFail($id);
+        $clientes -> delete();
+        return redirect("admin/clientes");
     }
 }

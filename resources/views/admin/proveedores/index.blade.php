@@ -5,6 +5,7 @@
         <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h2>Proveedores</h2>
+            
             <a class="btn btn-info" href="{{ route('proveedores.create') }}">Nuevo Proveedor</a>
         </div>
 
@@ -26,21 +27,23 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($proveedores as $proveedores)
                     <tr>
-                        <td>PC-01</td>
-                        <td>Proveedor 01</td>
-                        <td>7752158598</td>
-                        <td>Dirección del proveedor</td>
-                        <td>proveedor@test.com</td>
-                        <td>DAG981205B41</td>
-                        <td>2021-05-12</td>
-                        <td># de cuenta</td>
-                        <td>Nike</td>
-                        <td>65918187178171177</td>
+                        <td>PC{{$proveedores -> id}}</td>
+                        <td>{{$proveedores -> Nombre}}</td>
+                        <td>{{$proveedores -> Numero_Telefonico}}</td>
+                        <td>{{$proveedores -> Direccion}}</td>
+                        <td>{{$proveedores -> RFC}}</td>
+                        <td>{{$proveedores -> Email}}</td>
+                        <td>{{$proveedores -> Fecha_registro}}</td>
+                        <td>{{$proveedores -> No_cuenta}}</td>
+                        <td>{{$proveedores -> Compania}}</td>
+                        <td>{{$proveedores -> Clave_interbancaria}}</td>
                         <td>
-                            <a href=""><strong>Ver más</strong></a>
+                            <a href="{{route("proveedores.edit", $proveedores -> id)}}"><strong>Ver mas</strong> </a>
                         </td>
                     </tr>
+                    @endforeach 
                 </tbody>
             </table>
         </div>
